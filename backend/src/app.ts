@@ -1,8 +1,8 @@
 import Fastify from 'fastify'
-import clientesRoutes from './routes/clients'
-import assetRoutes from './routes/assets'
+import {clientesRoutes} from './rotas/clientes'
+import {assetsRoutes} from './rotas/assets'
 
 export const app = Fastify()
 
 app.register(clientesRoutes, { prefix: '/clientes' })
-app.register(assetRoutes, { prefix: '/assets' })
+app.register(assetsRoutes, { prefix: '/assets' })

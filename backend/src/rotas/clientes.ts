@@ -1,15 +1,13 @@
 import { FastifyInstance } from 'fastify'
 import { z } from 'zod'
 import { Prisma, PrismaClient } from '@prisma/client'
-import { FastifyRequest, FastifyReply } from 'fastify';
-
 
 const prisma = new PrismaClient()
 
 export async function clientesRoutes(app: FastifyInstance) {
   
   // endpoint que retorna um cliente com seus ativos alocados.
-  app.get('/clientes/:id/alocacoes', async (request: FastifyRequest, reply: FastifyReply) => {
+  app.get('/clientes/:id/alocacoes', async (request, reply) => {
     const { id } = request.params as { id: string };
   
     const cliente = await prisma.cliente.findUnique({
@@ -32,7 +30,7 @@ export async function clientesRoutes(app: FastifyInstance) {
     return clientes
   })
 
-  app.get('/clientes/:id', async (request: FastifyRequest, reply: FastifyReply) => {
+  app.get('/clientes/:id', async (request, reply) => {
     const paramsSchema = z.object({
       id: z.string().transform(Number),
     })
@@ -51,7 +49,7 @@ export async function clientesRoutes(app: FastifyInstance) {
   })
 
   // Criar cliente
-  app.post('/clientes', async (request: FastifyRequest, reply: FastifyReply) => {
+  app.post('/clientes', async (request, reply) => {
     const schema = z.object({
       nome: z.string(),
       email: z.string().email(),
@@ -72,7 +70,7 @@ export async function clientesRoutes(app: FastifyInstance) {
   })
 
   // Atualizar cliente
-  app.put('/clientes/:id', async (request: FastifyRequest, reply: FastifyReply) => {
+  app.put('/clientes/:id', async (request, reply) => {
     const paramsSchema = z.object({
       id: z.string().transform(Number),
     })
@@ -95,7 +93,7 @@ export async function clientesRoutes(app: FastifyInstance) {
   })
 
     // Deletar cliente
-    app.delete('/clientes/:id', async (request: FastifyRequest, reply: FastifyReply) => {
+    app.delete('/clientes/:id', async (request, reply) => {
         const paramsSchema = z.object({
           id: z.string().transform(Number),
         })
