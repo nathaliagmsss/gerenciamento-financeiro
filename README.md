@@ -38,7 +38,7 @@ Este projeto é uma aplicação fullstack desenvolvida para um escritório de in
 
 ### 2. Clonar o repositório
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/nathaliagmsss/gerenciamento-financeiro.git
 cd seu-repositorio
 ```
 
