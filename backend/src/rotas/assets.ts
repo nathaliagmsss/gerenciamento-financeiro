@@ -1,12 +1,14 @@
 import { PrismaClient } from '@prisma/client';
 import { z } from 'zod'
+import { FastifyRequest, FastifyReply } from 'fastify';
+
 
 const prisma = new PrismaClient();
 
 export async function assetsRoutes(app: FastifyInstance) {
     
     // Lista fixa de ativos com valores estáticos
-    app.get('/ativos-fixos', async (request, reply) => {
+    app.get('/ativos-fixos', async (request: FastifyRequest, reply: FastifyReply) => {
         const ativos = [
           { name: "NASD11", value: 15.30 },
           { name: "V8 SPEEDWAY", value: 1.00 },
@@ -28,7 +30,7 @@ export async function assetsRoutes(app: FastifyInstance) {
     })
   
     // Criar asset
-    app.post('/assets', async (request, reply) => {
+    app.post('/assets', async (request: FastifyRequest, reply: FastifyReply) => {
       const schema = z.object({
         name: z.string(),
         value: z.number(),
@@ -42,7 +44,7 @@ export async function assetsRoutes(app: FastifyInstance) {
     })
   
     // Atualizar asset
-    app.put('/assets/:id', async (request, reply) => {
+    app.put('/assets/:id', async (request: FastifyRequest, reply: FastifyReply) => {
       const paramsSchema = z.object({
         id: z.string().transform(Number),
       })
@@ -65,7 +67,7 @@ export async function assetsRoutes(app: FastifyInstance) {
     })
   
     // Deletar asset
-    app.delete('/assets/:id', async (request, reply) => {
+    app.delete('/assets/:id', async (request: FastifyRequest, reply: FastifyReply) => {
       const paramsSchema = z.object({
         id: z.string().transform(Number),
       })
