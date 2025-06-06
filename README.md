@@ -39,7 +39,7 @@ Este projeto é uma aplicação fullstack desenvolvida para um escritório de in
 ### 2. Clonar o repositório
 ```bash
 git clone https://github.com/nathaliagmsss/gerenciamento-financeiro.git
-cd seu-repositorio
+cd gerenciamento-financeiro
 ```
 
 ### 3. Configurar variáveis de ambiente
@@ -66,6 +66,11 @@ docker-compose up --build
 
 A aplicação backend estará rodando em: [http://localhost:3333](http://localhost:3333)  
 O frontend (Next.js) estará em: [http://localhost:3000](http://localhost:3000) *(se iniciado manualmente com `npm run dev` dentro da pasta `frontend`)*
+
+### 5. Rodar a migration dentro do container
+```bash
+docker exec -it backend_api npx prisma migrate dev
+```
 
 ---
 
