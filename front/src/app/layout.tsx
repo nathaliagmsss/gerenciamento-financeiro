@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="pt-BR" suppressHydrationWarning>
       <body className={inter.className}>
         <Providers>
-          <nav className="bg-gray-100 dark:bg-gray-900 p-4 shadow">
+          <nav className="bg-gray-100 p-4 shadow">
             <ul className="flex gap-4">
               <li><Link href="/" className="hover:underline">Home</Link></li>
               <li><Link href="/clientes" className="hover:underline">Clientes</Link></li>
